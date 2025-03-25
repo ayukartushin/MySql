@@ -3,9 +3,9 @@ package utils;
 import java.sql.*;
 
 public class ConnectionManager {
-    private static final String url = "jdbc:mysql://sql.home.kartushin.su:3306/test";
-    private static final String user = "admin";
-    private static final String password = "711267";
+    private static final String url = System.getenv("url");
+    private static final String user = System.getenv("login");
+    private static final String password = System.getenv("pass");
 
     private static Connection connection;
     private static Statement statement;
@@ -30,6 +30,6 @@ public class ConnectionManager {
     }
 
     public static void executeQuery(String query) throws SQLException {
-        statement.executeQuery(query);
+        statement.executeUpdate(query);
     }
 }

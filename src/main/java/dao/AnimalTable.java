@@ -17,7 +17,7 @@ public class AnimalTable extends AbsTable{
         columns.put("color", "varchar(15)");
         columns.put("weight", "int");
         columns.put("age", "int");
-        //create();
+        create();
     }
 
     public List<Animal> findAll() {
