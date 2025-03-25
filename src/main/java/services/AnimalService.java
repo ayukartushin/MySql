@@ -2,16 +2,18 @@ package services;
 
 import dao.AbsTable;
 import dao.AnimalTable;
+import dao.IAnimalTable;
 import dto.Animal;
+import factory.TablesFactory;
 
 import java.util.List;
 
 public class AnimalService {
-    private AnimalTable animalTable;
+    private IAnimalTable animalTable;
     //private AbsTable roomTable;
 
-    public AnimalService(){
-        animalTable = new AnimalTable();
+    public AnimalService(IAnimalTable iAnimalTable){
+        animalTable = iAnimalTable;
     }
 
     public List<Animal> getAllAnimals(){

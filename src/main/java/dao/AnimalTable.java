@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalTable extends AbsTable{
+public class AnimalTable extends AbsTable implements IAnimalTable{
     public AnimalTable() {
         super("animals");
         columns.put("id", "bigint PRIMARY KEY AUTO_INCREMENT");
@@ -20,6 +20,7 @@ public class AnimalTable extends AbsTable{
         create();
     }
 
+    @Override
     public List<Animal> findAll() {
         List<Animal> animals = new ArrayList<>();
         try {
@@ -42,6 +43,7 @@ public class AnimalTable extends AbsTable{
         return animals;
     }
 
+    @Override
     public Animal findById(Long searchId) {
         Animal animal = new Animal();
         try {
