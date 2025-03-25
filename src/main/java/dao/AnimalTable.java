@@ -18,13 +18,14 @@ public class AnimalTable extends AbsTable implements IAnimalTable{
         columns.put("weight", "int");
         columns.put("age", "int");
         create();
+        ConnectionManager manager = ConnectionManager.getInstance();
     }
 
     @Override
     public List<Animal> findAll() {
         List<Animal> animals = new ArrayList<>();
         try {
-            try (ResultSet rs = ConnectionManager.executeQueryWithAnswer("SELECT * FROM " + tableName)) {
+            try (ResultSet rs = ConnectionManager.getInstance().executeQueryWithAnswer("SELECT * FROM " + tableName)) {
                 while (rs.next()) {
                     long id = rs.getLong("id");
                     String name = rs.getString("name");
@@ -47,7 +48,7 @@ public class AnimalTable extends AbsTable implements IAnimalTable{
     public Animal findById(Long searchId) {
         Animal animal = new Animal();
         try {
-            try (ResultSet rs = ConnectionManager.executeQueryWithAnswer("SELECT * FROM " + tableName + " WHERE id=" + searchId)) {
+            try (ResultSet rs = ConnectionManager.getInstance().executeQueryWithAnswer("SELECT * FROM " + tableName + " WHERE id=" + searchId)) {
                 while (rs.next()) {
                     long id = rs.getLong("id");
                     String name = rs.getString("name");

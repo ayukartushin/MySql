@@ -18,7 +18,7 @@ public abstract class AbsTable {
     public void create() {
         String sqlRequest = String.format("CREATE TABLE IF NOT EXISTS %s (%s)", this.tableName, convertMapColumnsToString());
         try {
-            ConnectionManager.executeQuery(sqlRequest);
+            ConnectionManager.getInstance().executeQuery(sqlRequest);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
