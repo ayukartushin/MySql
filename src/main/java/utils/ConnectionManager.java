@@ -38,4 +38,9 @@ public class ConnectionManager {
     public void executeQuery(String query) throws SQLException {
         statement.executeUpdate(query);
     }
+
+    public void close() throws SQLException {
+        statement.close();
+        connection.close();
+    }
 }
